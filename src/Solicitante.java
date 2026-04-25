@@ -69,15 +69,16 @@ public class Solicitante {
 
     public void generarResultado(){
         if (subsidioAprobado()){
-            System.out.println("Subsidio aprobado");
+            System.out.println("\n-------Resultado de la evaluación------");
+            System.out.println("Subsidio aprobado: Cumple todos los requisitos");
         }else{
             System.out.println("Subsidio no aprobado (Motivos): ");
 
-            if (ingresoMensual>1200){
+            if (getIngresoMensual()>1200){
                 System.out.println("Ingreso mayor a $1200");
             }
 
-            if (cantidadVehiculos>1){
+            if (getCantidadVehiculos()>1){
                 System.out.println("Mas de un vehiculo");
             }
             if (!viveEnEcuador){
@@ -87,18 +88,22 @@ public class Solicitante {
     }
 
     public String toString(){
-        return "Nombre: "+nombreCompleto+
+        return "\n------Datos del solicitante------"+
+                "\nNombre: "+nombreCompleto+
                 "\nCedula: " + cedula+
                 "\nIngreso: " + ingresoMensual+
                 "\nVehiculos: " + cantidadVehiculos+
-                "\nVive en Ecuador: " + viveEnEcuador;
+                "\nVive en Ecuador: " + viveEnEcuador+
+        "\n";
     }
 
     public static void mostrarReglasSubsidio(){
         System.out.println("-----Condiciones para el subsidio-----");
-        System.out.println("Tener ingresos mensuales menores o iguales a $1,200.");
-        System.out.println("No poseer más de un vehículo registrado.");
-        System.out.println("Tener residencia en Ecuador (no aplica para residentes en el extranjero).");
+        System.out.println("1.Tener ingresos mensuales menores o iguales a $1,200.");
+        System.out.println("2.No poseer más de un vehículo registrado.");
+        System.out.println("3.Tener residencia en Ecuador");
+        System.out.println("-----------------------------------------");
+        System.out.println("\n");
     }
 
     public double calcularConsumoMensual(){
@@ -111,7 +116,5 @@ public class Solicitante {
         return km/40;
 
     }
-
-
 }
 
