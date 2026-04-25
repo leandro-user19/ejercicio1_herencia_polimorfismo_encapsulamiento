@@ -5,34 +5,113 @@ public class Solicitante {
     private int cantidadVehiculos;
     private boolean viveEnEcuador;
 
-    public Solicitante(String nombreCompleto, String cedula, double ingresoMensual, int cantidadVehiculos, boolean viveEnEcuador){
-        this.nombreCompleto=nombreCompleto;
-        this.cedula=cedula;
-        this.ingresoMensual=ingresoMensual;
-        this.cantidadVehiculos=cantidadVehiculos;
-        this.viveEnEcuador=viveEnEcuador;
+    public Solicitante(String nombreCompleto, String cedula, double ingresoMensual, int cantidadVehiculos, boolean viveEnEcuador) {
+        this.nombreCompleto = nombreCompleto;
+        this.cedula = cedula;
+        this.ingresoMensual = ingresoMensual;
+        this.cantidadVehiculos = cantidadVehiculos;
+        this.viveEnEcuador = viveEnEcuador;
     }
 
     public void setIngresoMensual(double ingresoMensual) {
-        if (ingresoMensual>=470){
-            this.ingresoMensual=ingresoMensual;
-        }else{
+        if (ingresoMensual >= 470) {
+            this.ingresoMensual = ingresoMensual;
+        } else {
             System.out.println("Ingreso no admitido");
         }
-
     }
 
-    public void setCantidadVehiculos(int cantidadVehiculos){
-        if (cantidadVehiculos>=0){
-            this.cantidadVehiculos=cantidadVehiculos;
-        }else{
+    public double getIngresoMensual() {
+        return ingresoMensual;
+    }
+
+    public void setCantidadVehiculos(int cantidadVehiculos) {
+        if (cantidadVehiculos >= 0) {
+            this.cantidadVehiculos = cantidadVehiculos;
+        } else {
             System.out.println("Cantidad no admitida");
         }
     }
 
-    public void setViveEnEcuador(boolean viveEnEcuador){
-        this.viveEnEcuador=viveEnEcuador;
+    public int getCantidadVehiculos() {
+        return cantidadVehiculos;
+    }
+
+    public void setViveEnEcuador(boolean viveEnEcuador) {
+        this.viveEnEcuador = viveEnEcuador;
+    }
+
+    public boolean isViveEnEcuador() {
+        return viveEnEcuador;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public boolean subsidioAprobado() {
+        return ingresoMensual <= 1200
+                && cantidadVehiculos <= 1
+                && viveEnEcuador;
+    }
+
+    public void generarResultado(){
+        if (subsidioAprobado()){
+            System.out.println("Subsidio aprobado");
+        }else{
+            System.out.println("Subsidio no aprobado (Motivos): ");
+
+            if (ingresoMensual>1200){
+                System.out.println("Ingreso mayor a $1200");
+            }
+
+            if (cantidadVehiculos>1){
+                System.out.println("Mas de un vehiculo");
+            }
+            if (!viveEnEcuador){
+                System.out.println("No vive en Ecuador");
+            }
+        }
+    }
+
+    public String toString(){
+        return "Nombre: "+nombreCompleto+
+                "\nCedula: " + cedula+
+                "\nIngreso: " + ingresoMensual+
+                "\nVehiculos: " + cantidadVehiculos+
+                "\nVive en Ecuador: " + viveEnEcuador;
+    }
+
+    public static void mostrarReglasSubsidio(){
+        System.out.println("-----Condiciones para el subsidio-----");
+        System.out.println("Tener ingresos mensuales menores o iguales a $1,200.");
+        System.out.println("No poseer más de un vehículo registrado.");
+        System.out.println("Tener residencia en Ecuador (no aplica para residentes en el extranjero).");
+    }
+
+    public double calcularConsumoMensual(){
+        double km = 1000;
+        return km/40;
+    }
+
+    public double calcularConsumoMensual(double kmextra){
+        double km = 1000+kmextra;
+        return km/40;
+
     }
 
 
 }
+
