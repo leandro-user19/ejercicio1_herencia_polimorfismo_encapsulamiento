@@ -9,14 +9,13 @@ class CuentaAhorros extends CuentaBancaria {
         if (monto > 0 && monto <= saldo) {
             saldo -= monto;
         } else {
-            System.out.println("Retiro inválido en Cuenta de Ahorros");
+            System.out.println("Retiro inválido en Ahorros");
         }
     }
 
     @Override
     public double calcularInteresMensual() {
-        double tasaAnual = 0.03;
-        double interes = saldo * (tasaAnual / 12);
+        double interes = saldo * (0.03 / 12);
         saldo += interes;
         return interes;
     }
