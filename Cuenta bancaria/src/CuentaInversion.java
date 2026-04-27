@@ -9,7 +9,7 @@ class CuentaInversion extends CuentaBancaria {
         if (monto > 0 && monto <= saldo) {
             saldo -= monto;
         } else {
-            System.out.println("Retiro inválido en Cuenta de Inversión");
+            System.out.println("Retiro inválido en Inversión");
         }
     }
 
