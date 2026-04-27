@@ -11,12 +11,12 @@ class CuentaCorriente extends CuentaBancaria {
         if (monto > 0 && (saldo - monto) >= -LIMITE_SOBREGIRO) {
             saldo -= monto;
         } else {
-            System.out.println("Sobregiro excedido o retiro inválido");
+            System.out.println(" Sobregiro excedido");
         }
     }
 
     @Override
     public double calcularInteresMensual() {
-        return 0; // No genera interés
+        return 0; 
     }
 }
