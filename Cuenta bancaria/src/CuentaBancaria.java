@@ -6,6 +6,7 @@ abstract class CuentaBancaria {
     public CuentaBancaria(String numeroCuenta, String titular, double saldoInicial) {
         this.numeroCuenta = numeroCuenta;
         this.titular = titular;
+
         if (saldoInicial >= 0) {
             this.saldo = saldoInicial;
         } else {
@@ -13,7 +14,6 @@ abstract class CuentaBancaria {
         }
     }
 
-    // GETTERS
     public String getNumeroCuenta() {
         return numeroCuenta;
     }
