@@ -1,14 +1,11 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
 
-        List<CuentaBancaria> cuentas = new ArrayList<>();
+        CuentaBancaria[] cuentas = new CuentaBancaria[3];
 
-        cuentas.add(new CuentaAhorros("001", "Ana Pérez", 1200));
-        cuentas.add(new CuentaCorriente("002", "Luis Gómez", 800));
-        cuentas.add(new CuentaInversion("003", "María López", 7000));
+        cuentas[0] = new CuentaAhorros("001", "Ana Pérez", 1200);
+        cuentas[1] = new CuentaCorriente("002", "Luis Gómez", 800);
+        cuentas[2] = new CuentaInversion("003", "María López", 7000);
 
         double totalIntereses = 0;
 
@@ -24,6 +21,7 @@ public class Main {
             System.out.println("Saldo actual: $" + String.format("%.2f", cuenta.getSaldo()));
         }
 
-        System.out.println("\n💰 TOTAL INTERESES DEL BANCO: $" + String.format("%.2f", totalIntereses));
+        System.out.println("\n💰 TOTAL INTERESES DEL BANCO: $" 
+                + String.format("%.2f", totalIntereses));
     }
 }
